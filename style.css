@@ -1,0 +1,142 @@
+/* Reset básico */
+@font-face {
+    font-family: 'Bank Gothic Light BT';
+    src: url('fuentes/bank-gothic-light-bt.ttf') format('truetype'); /* Cambiado a truetype si el formato woff2 no está disponible */
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Bank Gothic Light BT', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 98%;
+    margin: auto;
+}
+
+/* Header */
+header {
+    background: black;
+    color: #fff;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el espacio entre el logo y el nav */
+}
+
+.logo {
+    flex: 1; /* Ocupa el espacio necesario para el logo */
+}
+
+.logo img {
+    height: 50px; /* Tamaño del logo */
+}
+
+nav {
+    flex: 2; /* Ocupa el espacio necesario para el menú de navegación */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Alinea los elementos al centro */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hero section */
+.hero {
+    background: black;
+    color: #333;
+    padding: 2rem 0;
+    text-align: center;
+    position: relative; /* Necesario para la posición absoluta de la imagen */
+}
+
+.hero img {
+    width: 100%; /* La imagen se ajusta al ancho del contenedor */
+    max-height: 400px; /* Ajusta según el tamaño deseado */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
+    display: block; /* Elimina el espacio debajo de la imagen */
+    margin-bottom: 1rem; /* Espacio entre la imagen y el texto */
+}
+
+.hero h2 {
+    margin-bottom: 1rem;
+}
+
+.btn {
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Services section */
+.services {
+    padding: 2rem 0;
+    background: black;
+}
+
+.services h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.service-item {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+/* Footer */
+footer {
+    background: black;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Estilos de la galería */
+.gallery {
+    padding: 20px 0;
+    background-color: black;
+}
+
+.gallery .container {
+    display: flex;
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-content: center; /* Alinea las imágenes al centro del contenedor */
+    flex-wrap: wrap; /* Permite que las imágenes se ajusten en múltiples filas si es necesario */
+}
+
+.gallery img {
+    max-width: 100%; /* Asegura que las imágenes no superen el tamaño del contenedor */
+    height: auto; /* Mantiene la proporción de las imágenes */
+    border-radius: 2px; /* Opcional: añade bordes redondeados a las imágenes */
+    width: 200px; /* Tamaño fijo para las imágenes (ajustar según sea necesario) */
+}

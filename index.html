@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turnero de Peluquería</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Incluir CSS de Flatpickr -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <!-- Incluir Font Awesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="brand-image">
+            <img src="images/nile_header.jpg" alt="Marca">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="booking-form">
+            <label for="name">NOMBRE COMPLETO:</label>
+            <input type="text" id="name" required>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="professional">PROFESIONAL:</label>
+                    <select id="professional" required>
+                        <option value="Nicolas">Nicolas</option>
+                        <option value="Lautaro">Lautaro</option>
+                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="calendar">FECHA:</label>
+                    <input type="text" id="calendar" required>
+                </div>
+            </div>
+
+            <label for="time">HORA:</label>
+            <select id="time" required></select>
+
+            <!-- Nuevo campo para seleccionar servicio -->
+            <label for="service">SERVICIOS:</label>
+            <select id="service" required>
+                <option value="Corte">Corte $8.500</option>
+                <option value="Corte + Barba">Corte + Barba $10.000</option>
+                  <!-- Agrega más opciones según sea necesario -->
+            </select>
+
+            <button id="book-button">RESERVAR</button>
+        </div>
+        <h2>TURNOS RESERVADOS</h2>
+        <div class="reservations">
+            <ul id="appointment-list"></ul>
+        </div>
+    </div>
+
+    <!-- Mensaje de confirmación -->
+  <!-- Mensaje de confirmación -->
+<div id="confirmation-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <p>¡Tu turno ha sido reservado con éxito!</p>
+        <p>¿Deseas recibir un recordatorio en WhatsApp?</p>
+        <a id="whatsapp-link" href="#" target="_blank">Enviar recordatorio por WhatsApp</a>
+    </div>
+</div>
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <p><strong>Dirección: </strong>Av. De Mayo 702 - Ramos Mejia</p>
+                <p><strong>Horarios:</strong> Martes a Sábado: 10:30 - 20:00</p>
+            </div>
+            <div class="social-media">
+                <a href="https://www.instagram.com/nile.urbanlounge" target="_blank" title="Síguenos en Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@nile.urban" target="_blank" title="Síguenos en TikTok">
+                    <i class="fab fa-tiktok"></i>
+                </a>    
+            </div>
+        </div>
+    </footer>
+
+    <!-- Incluir JavaScript de Flatpickr -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/dist/date-fns.min.js"></script>
+</body>
+</html>
