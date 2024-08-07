@@ -1,7 +1,7 @@
 /* Reset básico */
 @font-face {
     font-family: 'Bank Gothic Light BT';
-    src: url('fuentes/bank-gothic-light-bt.ttf') format('truetype'); /* Cambiado a truetype si el formato woff2 no está disponible */
+    src: url('fuentes/bank-gothic-light-bt.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: black;
 }
 
 /* Estilos generales */
@@ -27,23 +28,29 @@ body {
 /* Header */
 header {
     background: black;
-    color: #fff;
+    color: white;
     padding: 1rem 0;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Distribuye el espacio entre el logo y el nav */
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    text-align: center;
+    width: 100vw;
 }
 
-.logo {
-    flex: 1; /* Ocupa el espacio necesario para el logo */
+.logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
-.logo img {
-    height: 50px; /* Tamaño del logo */
+.header-logo {
+    width: 120px;
+    height: auto;
 }
 
 nav {
-    flex: 2; /* Ocupa el espacio necesario para el menú de navegación */
+    flex: 2;
 }
 
 nav ul {
@@ -51,7 +58,7 @@ nav ul {
     display: flex;
     margin: 0;
     padding: 0;
-    justify-content: center; /* Alinea los elementos al centro */
+    justify-content: center;
 }
 
 nav ul li {
@@ -59,26 +66,40 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
     display: inline-block;
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s ease, color 0.3s ease; /* Transición suave para el zoom y cambio de color */
 }
 
+nav ul li a:hover {
+    transform: scale(1.2); /* Aumenta el tamaño en un 10% */
+    color: #f0f0f0; /* Cambia el color del texto si es necesario */
+}
 /* Hero section */
 .hero {
     background: black;
     color: #333;
-    padding: 2rem 0;
+    padding: 0;
     text-align: center;
-    position: relative; /* Necesario para la posición absoluta de la imagen */
+}
+
+.hero .image-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .hero img {
-    width: 100%; /* La imagen se ajusta al ancho del contenedor */
-    max-height: 400px; /* Ajusta según el tamaño deseado */
-    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
-    display: block; /* Elimina el espacio debajo de la imagen */
-    margin-bottom: 1rem; /* Espacio entre la imagen y el texto */
+    width: auto;
+    height: 100%;
+    max-width: 50%;
+    border: solid 1px white;
 }
 
 .hero h2 {
@@ -115,13 +136,91 @@ footer {
     color: #fff;
     padding: 1rem 0;
     text-align: center;
-}
-
-h1 {
-    text-align: center;
+    border-top: solid 1px grey;
 }
 
 /* Estilos de la galería */
+.gallery {
+    padding: 20px 0;
+    background-color: black;
+    width: 100vw;
+}
+
+.gallery .container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+img.gallery-img {
+    width: 400px;
+}
+
+.gallery img {
+    max-width: 920px;
+    width: 100%;
+    height: auto;
+    border-radius: 1px;
+    border: solid 1px grey;
+}
+
+/* Estilos de la galería 2 */
+.gallery2 {
+    padding: 20px 0;
+    background-color: black;
+    width: 100vw;
+    overflow-x: auto;
+}
+
+.gallery2 .container {
+    display: flex;
+    gap: 90px;
+    width: max-content;
+}
+
+.gallery2 img {
+    max-width: 25vw;
+    height: auto;
+    border-radius: 1px;
+    border: solid 0.5px grey;
+}
+
+/* Estilos de la sección de información */
+.info {
+    padding: 20px 0;
+    background-color: black;
+    color: white;
+    width: 100vw;
+}
+
+.info .container {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos a los extremos y el centro */
+    max-width: 1200px;
+    margin: auto;
+}
+
+.info-item {
+    /* No es necesario aplicar flex: 1 si no quieres que todos los elementos se estiren igual */
+    text-align: center;
+    /* Ajusta el margen si es necesario para el espaciado entre los elementos */
+}
+
+.info-item h3 {
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 1em;
+}
+
+
+/* Estilos de la galería con botón */
 .gallery {
     padding: 20px 0;
     background-color: black;
@@ -129,14 +228,183 @@ h1 {
 
 .gallery .container {
     display: flex;
-    gap: 10px; /* Espacio entre las imágenes */
-    justify-content: center; /* Alinea las imágenes al centro del contenedor */
-    flex-wrap: wrap; /* Permite que las imágenes se ajusten en múltiples filas si es necesario */
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    position: relative;
 }
 
-.gallery img {
-    max-width: 100%; /* Asegura que las imágenes no superen el tamaño del contenedor */
-    height: auto; /* Mantiene la proporción de las imágenes */
-    border-radius: 2px; /* Opcional: añade bordes redondeados a las imágenes */
-    width: 200px; /* Tamaño fijo para las imágenes (ajustar según sea necesario) */
+img.gallery-img {
+    width: 700px;
 }
+
+.gallery-img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+.btn_2 {
+    position: absolute;
+    background-color: white; /* Color de fondo inicial */
+    color: black; /* Color del texto inicial */
+    font-family: 'Bank Gothic Light BT', sans-serif;
+    padding: 10px 20px;
+    border: solid 1px white;
+    border-radius: 2px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 105%;
+    z-index: 1;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de color */
+}
+
+.btn_2:hover {
+    background-color: black; /* Color de fondo al pasar el cursor */
+    color: white; /* Color del texto al pasar el cursor */
+    border: solid 1px white; /* Cambia el borde si es necesario */
+}
+
+
+.nosotros {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: black; /* Cambia el color de fondo si es necesario */
+    text-align: center;
+    color: white;
+    width: 100vw;
+    border-top: solid 1px grey;
+    margin-top: 65px;
+}
+
+.nosotros h1 {
+    margin-bottom: 0px;
+    margin-top: 2px;
+    font-size: 20px;
+}
+
+.nosotros p {
+    margin-bottom: 1rem;
+    font-size: 1.2em;
+    line-height: 1.6;
+}
+
+.nosotros img {
+    max-width: 95%;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 2px;
+    border: solid 1px grey; /* Opcional: agrega un borde alrededor de la imagen */
+}
+
+
+/* Media Queries */
+
+/* Para pantallas de hasta 768px (tabletas y móviles en orientación vertical) */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .header-logo {
+        width: 100px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero .image-container {
+        flex-direction: column;
+    }
+
+    .hero img {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .gallery {
+        padding: 10px 0;
+    }
+
+    .gallery .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery img {
+        max-width: 100%;
+    }
+
+    .gallery2 {
+        padding: 10px 0;
+    }
+
+    .gallery2 .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery2 img {
+        max-width: 80%;
+        margin-bottom: 10px;
+    }
+
+    .info {
+        padding: 10px 0;
+    }
+
+    .info .container {
+        flex-direction: column;
+    }
+
+    .info-item {
+        margin: 10px 0;
+    }
+}
+
+/* Para pantallas de hasta 480px (móviles en orientación horizontal) */
+@media (max-width: 480px) {
+    .header-logo {
+        width: 80px;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    .hero img {
+        max-width: 100%;
+    }
+
+    .gallery2 img {
+        max-width: 100%;
+        margin-bottom: 5px;
+        display: none;
+    }
+
+    .info-item h3 {
+        font-size: 1em;
+    }
+
+    .info-item p {
+        font-size: 0.9em;
+    }
+
+    .btn_2 {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+

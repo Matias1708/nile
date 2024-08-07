@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function populateTimeOptions(schedule, reservedTimes = []) {
         const timeSelect = document.getElementById('time');
         const { startHour, endHour, interval } = schedule;
-        
+
         // Vacía el select antes de rellenarlo
         timeSelect.innerHTML = '';
 
@@ -75,6 +75,77 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Inicializa el cliente de Google API
+    function initClient() {
+        gapi.client.init({
+            clientId: '83227640060-kov52dchuleorkhmsdp3cagbqqsjl2fo.apps.googleusercontent.com',
+            discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+            scope: 'https://www.googleapis.com/auth/calendar'
+        }).then(function () {
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        });
+    }
+
+    function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+            console.log('Signed in');
+        } else {
+            console.log('Not signed in');
+        }
+    }
+
+    function handleAuthClick() {
+        gapi.auth2.getAuthInstance().signIn();
+    }
+
+    function handleSignoutClick() {
+        gapi.auth2.getAuthInstance().signOut();
+    }
+
+    function addEventToCalendar(event) {
+        const name = document.getElementById('name').value;
+        const professional = document.getElementById('professional').value;
+        const service = document.getElementById('service').value;
+        const date = document.getElementById('calendar').value;
+        const formattedDate = formatDate(new Date(date.split('/').reverse().join('/')));
+    
+        const eventDetails = {
+            'summary': `Cita con ${name}`,
+            'location': 'Dirección de la peluquería',
+            'description': `Cliente: ${name}\nProfesional: ${professional}\nServicio: ${service}\nFecha: ${formattedDate}\nHora: ${event.start.split('T')[1].slice(0, 5)} - ${event.end.split('T')[1].slice(0, 5)}`,
+            'start': {
+                'dateTime': event.start,
+                'timeZone': 'America/Argentina/Buenos_Aires'
+            },
+            'end': {
+                'dateTime': event.end,
+                'timeZone': 'America/Argentina/Buenos_Aires'
+            },
+            'reminders': {
+                'useDefault': false,
+                'overrides': [
+                    {'method': 'email', 'minutes': 24 * 60},
+                    {'method': 'popup', 'minutes': 10}
+                ]
+            }
+        };
+    
+        gapi.client.calendar.events.insert({
+            'calendarId': 'primary',
+            'resource': eventDetails
+        }).then(function(response) {
+            console.log('Evento creado: ' + response.result.htmlLink);
+        });
+    }
+    
+
+    function loadGapi() {
+        gapi.load('client:auth2', initClient);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadGapi);
+
     // Función para reservar una cita
     function bookAppointment() {
         const name = document.getElementById('name').value;
@@ -91,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
             listItem.textContent = `${name} - ${formattedDate} - ${time}hs - ${professional} - ${service}`; // Incluye el servicio en la reserva
             appointmentList.appendChild(listItem);
 
-            // Añade el tiempo reservado para la fecha y el profesional seleccionado
+            // Añadir el tiempo reservado para la fecha y el profesional seleccionado
             if (!reservedTimes[date]) {
                 reservedTimes[date] = {};
             }
@@ -99,6 +170,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 reservedTimes[date][professional] = [];
             }
             reservedTimes[date][professional].push(time);
+
+            // Convertir la fecha y la hora a un formato que Date pueda entender
+            const [day, month, year] = date.split('/').map(Number);
+            const [hours, minutes] = time.split(':').map(Number);
+
+            // Construir la fecha y la hora de inicio
+            const startTime = new Date(year, month - 1, day, hours, minutes);
+            const endTime = new Date(startTime.getTime() + 60 * 60 * 1000);
+
+            // Validar si las fechas son correctas
+            if (isNaN(startTime.getTime()) || isNaN(endTime.getTime())) {
+                console.error('Fecha o hora no válidas');
+                return;
+            }
+
+            // Añadir el evento al calendario de Google
+            addEventToCalendar({
+                start: startTime.toISOString(),
+                end: endTime.toISOString()
+            });
 
             // Actualiza el desplegable de horas
             updateAvailableTimes();
@@ -164,4 +255,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Añade el evento de clic al botón
     document.querySelector('#book-button').addEventListener('click', bookAppointment);
+
+    // Función para mostrar el modal de confirmación solo para el administrador
+    function showConfirmationModal() {
+        const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
+        if (isAdmin === 'nico1234') { // Verifica la contraseña
+            document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
+        } 
+    }
+
+    // Mostrar el modal de confirmación solo al administrador
+    showConfirmationModal();
 });
