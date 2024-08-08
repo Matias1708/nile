@@ -137,6 +137,7 @@ footer {
     padding: 1rem 0;
     text-align: center;
     border-top: solid 1px grey;
+    width: 100vw;
 }
 
 /* Estilos de la galería */
@@ -359,6 +360,7 @@ img.gallery-img {
     .gallery2 img {
         max-width: 80%;
         margin-bottom: 10px;
+        display: none;
     }
 
     .info {

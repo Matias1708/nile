@@ -242,6 +242,67 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.booking-form input, .booking-form select {
+    display: block;
+    width: calc(100% - 16px);
+    font-family: 'Bank Gothic Light BT', sans-serif;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    border-radius: 4px;
+    background: #c6c6c6;
+    color: black;
+    font-weight: bold;
+}
+
+/* Estilos para el modal de autenticación */
+#admin-auth-modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Desplazamiento si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
+
+/* Estilos del contenido del modal */
+#admin-auth-modal .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Margen vertical centrado */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+    max-width: 400px; /* Ancho máximo */
+    text-align: center; /* Texto centrado */
+}
+
+/* Estilos del botón de cerrar */
+#admin-auth-modal .close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#admin-auth-modal .close-btn:hover,
+#admin-auth-modal .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo para el input y el botón */
+#admin-auth-modal input,
+#admin-auth-modal button {
+    margin: 10px 0;
+    padding: 10px;
+    width: calc(100% - 22px); /* Ancho del input y el botón */
+}
+
 /* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
     .booking-form, .reservations {
