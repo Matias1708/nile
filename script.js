@@ -267,3 +267,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mostrar el modal de confirmación solo al administrador
     showConfirmationModal();
 });
+
+
+// Función para obtener todos los documentos de la colección 'Reserva'
+function getAllReservations(db) {
+    db.collection('reservas').get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            console.log(doc.id, ' => ', doc.data());
+        });
+        console.log('FIN');
+    })
+    .catch((error) => {
+        console.error('Error obteniendo documentos: ', error);
+    });
+}
