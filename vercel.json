@@ -1,0 +1,12 @@
+{
+    "routes": [
+      {
+        "src": "/pantalla1",
+        "dest": "/src/pantalla1/principal.html"
+      },
+      {
+        "src": "/pantalla2",
+        "dest": "/src/pantalla2/index.html"
+      }
+    ]
+  }
