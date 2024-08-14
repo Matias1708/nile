@@ -313,17 +313,20 @@ header {
     height: 100%; /* Alto completo de la pantalla */
     overflow: auto; /* Permite hacer scroll si el contenido del modal es más grande que la ventana */
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Contenido del modal */
 .modal-content {
     background-color: #fff;
-    margin: 15% auto; /* Centra el modal verticalmente y horizontalmente */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Ancho del modal */
     max-width: 500px; /* Ancho máximo del modal */
     position: relative;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2); /* Sombra para un efecto de profundidad */
 }
 
 /* Botón para cerrar el modal */
