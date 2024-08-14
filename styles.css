@@ -4,6 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 /* Modal container */
 .modal {
     display: none; /* Oculto por defecto */
@@ -41,6 +42,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 
 html, body {
     height: 100%;
@@ -257,7 +259,7 @@ header {
 }
 
 /* Estilos para el modal de autenticación */
-#admin-auth-modal {
+/*#admin-auth-modal {
     display: none;  Ocultar el modal por defecto 
     position: fixed; /* Fijo en la pantalla 
     z-index: 1; /* Encima de otros elementos 
@@ -268,7 +270,7 @@ header {
     overflow: auto; /* Desplazamiento si es necesario 
     background-color: rgb(0,0,0); /* Color de fondo 
     background-color: rgba(0,0,0,0.4); /* Fondo con opacidad 
-}
+}*/
 
 /* Estilos del contenido del modal */
 #admin-auth-modal .modal-content {
