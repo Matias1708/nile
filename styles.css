@@ -5,41 +5,6 @@
     font-style: normal;
 }
 
-/* Estilo para el modal */
-.modal {
-    /*display: none; /* Ocultar el modal por defecto */
-    position: fixed; /* Mantener el modal en la misma posición */
-    z-index: 1000; /* Asegurarse de que esté en la parte superior */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Agregar barra de desplazamiento si es necesario */
-    background-color: rgba(0,0,0,0.4); /* Fondo semitransparente */
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* Centrar el modal */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
-    max-width: 500px; /* Ancho máximo del modal */
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 
 html, body {
@@ -215,43 +180,6 @@ header {
     width: 100%;
 }
 
-/* Estilo para los modales */
-.modal {
-    display: none; /* Ocultar el modal por defecto */
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    background-color: rgba(0,0,0,0.4); /* Fondo oscuro para el modal */
-}
-
-.modal-content {
-    background-color: black;
-    margin: 0;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
 
 /* Estilo específico para los modales de confirmación y turnos reservados */
 /*#confirmation-modal {
