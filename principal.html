@@ -184,9 +184,7 @@ async function authenticateAdmin() {
             // Actualizar opciones de hora cuando se seleccione la fecha o el profesional
             document.getElementById('calendar').addEventListener('change', populateTimeOptions);
             document.getElementById('professional').addEventListener('change', populateTimeOptions);
-            document.getElementById('admin-button').addEventListener('click', showAdminModal);
-            document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
-            document.querySelectorAll('.close-btn').forEach(btn => btn.addEventListener('click', hideAdminModal));
+    
         };
     </script>
 </head>
