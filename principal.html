@@ -134,43 +134,42 @@
             }
         }
 
-       // Función para mostrar el modal de autenticación del administrador
-        function showAdminModal() {
-            document.getElementById('admin-auth-modal').style.display = 'flex';
+       // Configura el evento change en el calendario y el profesional para rellenar la hora
+    document.getElementById('calendar').addEventListener('change', populateTimeOptions);
+    document.getElementById('professional').addEventListener('change', populateTimeOptions);
+
+    // Función para mostrar el modal de autenticación del administrador
+    function showAdminModal() {
+        document.getElementById('admin-auth-modal').style.display = 'flex';
+    }
+
+    // Función para ocultar el modal de autenticación
+    function hideAdminModal() {
+        document.getElementById('admin-auth-modal').style.display = 'none';
+    }
+
+    // Función para manejar el ingreso de la contraseña
+    async function authenticateAdmin() {
+        const password = document.getElementById('admin-password').value;
+        const correctPassword = 'nico1234'; // Reemplaza con la contraseña real
+
+        if (password === correctPassword) {
+            hideAdminModal();
+            document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de turnos reservados
+            await getRecords(); // Actualiza la lista de reservas
+        } else {
+            document.getElementById('auth-error-message').style.display = 'block';
         }
+    }
 
-        // Función para ocultar el modal de autenticación
-        function hideAdminModal() {
-            document.getElementById('admin-auth-modal').style.display = 'none';
-        }
+    // Configura los eventos del modal
+    document.getElementById('admin-button').addEventListener('click', showAdminModal);
+    document.querySelector('.close-btn').addEventListener('click', hideAdminModal);
+    document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
 
-        // Función para manejar el ingreso de la contraseña
-        async function authenticateAdmin() {
-            const password = document.getElementById('admin-password').value;
-            const correctPassword = 'nico1234'; // Reemplaza con la contraseña real
-
-            if (password === correctPassword) {
-                hideAdminModal();
-                document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de turnos reservados
-                await getRecords(); // Actualiza la lista de reservas
-            } else {
-                document.getElementById('auth-error-message').style.display = 'block';
-            }
-        }
-
-        // Función para mostrar el modal de administración cuando se haga clic en el botón
-        function setupAdminButton() {
-            document.getElementById('admin-button').addEventListener('click', showAdminModal);
-            document.querySelector('.close-btn').addEventListener('click', hideAdminModal);
-            document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
-        }
-
-        // Función para inicializar la página
-        window.onload = () => {
-            getRecords();
-            document.getElementById('book-button').addEventListener('click', bookAppointment);
-            document.getElementById('calendar').addEventListener('change', populateTimeOptions);
-            document.getElementById('professional').addEventListener('change', populateTimeOptions);
+    // Configura el botón de reservar
+    document.getElementById('book-button').addEventListener('click', bookAppointment);
+});
             setupAdminButton(); // Configura el botón de administración
         };
     </script>
