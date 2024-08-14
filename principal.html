@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turnero de Peluquería</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.2.0/dist/index.min.css">
@@ -25,7 +24,6 @@
             appId: "1:798328145085:web:8ad8642e133fdd6fab63d4",
             measurementId: "G-44H22X36PS"
         };
-        
 
         // Inicializar Firebase
         const app = initializeApp(firebaseConfig);
@@ -104,6 +102,7 @@
 
                     // Actualizar la lista de reservas
                     await getRecords();
+                    showConfirmationModal(); // Mostrar el modal de confirmación
                 } catch (error) {
                     console.error('Error al añadir la reserva: ', error);
                 }
@@ -151,17 +150,34 @@
             }
         }
 
+        // Función para mostrar el modal de confirmación
+        function showConfirmationModal() {
+            document.getElementById('confirmation-modal').style.display = 'block';
+        }
+
+        // Función para cerrar el modal de confirmación
+        function closeConfirmationModal() {
+            document.getElementById('confirmation-modal').style.display = 'none';
+        }
+
+        // Inicializar Flatpickr en el campo de fecha
+        function initDatePicker() {
+            flatpickr("#calendar", {
+                dateFormat: "d/m/Y",
+                locale: "es"
+            });
+        }
+
         // Llama a la función para obtener los documentos al cargar la página
         window.onload = () => {
             getRecords();
+            initDatePicker();
 
             document.getElementById('book-button').addEventListener('click', bookAppointment);
 
             // Actualizar opciones de hora cuando se seleccione la fecha o el profesional
             document.getElementById('calendar').addEventListener('change', populateTimeOptions);
             document.getElementById('professional').addEventListener('change', populateTimeOptions);
-            // Inicializar Flatpickr en el campo de fecha
-            
         };
     </script>
 </head>
@@ -213,16 +229,29 @@
     </div>
 
     <!-- Mensaje de confirmación -->
-    <div id="confirmation-modal" class="modal">
+    <div id="confirmation-modal" class="modal" style="display: none;">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
+            <span class="close-btn" onclick="closeConfirmationModal()">&times;</span>
             <p>¡Tu turno ha sido reservado con éxito!</p>
             <p>¿Deseas recibir un recordatorio en WhatsApp?</p>
             <a id="whatsapp-link" href="#" target="_blank">Enviar recordatorio por WhatsApp</a>
         </div>
     </div>
-    <!-- Modal de autenticación del administrador -->
 
+    <!-- Modal de autenticación del administrador -->
+    <div id="auth-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+            <h2>Autenticación Administrador</h2>
+            <form id="auth-form">
+                <label for="admin-email">Email:</label>
+                <input type="email" id="admin-email" required>
+                <label for="admin-password">Contraseña:</label>
+                <input type="password" id="admin-password" required>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </div>
+    </div>
 
     <footer>
         <div class="footer-content">
