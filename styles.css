@@ -5,45 +5,6 @@
     font-style: normal;
 }
 
-/* Modal container */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-}
-
-/* Modal content */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* Close button */
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
 html, body {
     height: 100%;
     margin: 0;
@@ -217,7 +178,43 @@ header {
     width: 100%;
 }
 
+/* Estilo para los modales */
+.modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 600px;
+    background-color: rgba(0,0,0,0.4); /* Fondo oscuro para el modal */
+}
 
+.modal-content {
+    background-color: black;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 /* Estilo específico para los modales de confirmación y turnos reservados */
 /*#confirmation-modal {
@@ -259,18 +256,18 @@ header {
 }
 
 /* Estilos para el modal de autenticación */
-/*#admin-auth-modal {
-    display: none;  Ocultar el modal por defecto 
-    position: fixed; /* Fijo en la pantalla 
-    z-index: 1; /* Encima de otros elementos 
+#admin-auth-modal {
+    display: none; /* Ocultar el modal por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    z-index: 1; /* Encima de otros elementos */
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo 
-    height: 100%; /* Altura completa 
-    overflow: auto; /* Desplazamiento si es necesario 
-    background-color: rgb(0,0,0); /* Color de fondo 
-    background-color: rgba(0,0,0,0.4); /* Fondo con opacidad 
-}*/
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    overflow: auto; /* Desplazamiento si es necesario */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+}
 
 /* Estilos del contenido del modal */
 #admin-auth-modal .modal-content {
@@ -304,47 +301,6 @@ header {
     margin: 10px 0;
     padding: 10px;
     width: calc(100% - 22px); /* Ancho del input y el botón */
-}
-/* Estilos generales para el modal */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Posición fija para que el modal se quede en el mismo lugar al hacer scroll */
-    z-index: 1000; /* Asegúrate de que el modal esté por encima de otros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Ancho completo de la pantalla */
-    height: 100%; /* Alto completo de la pantalla */
-    overflow: auto; /* Permite hacer scroll si el contenido del modal es más grande que la ventana */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Contenido del modal */
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
-    max-width: 500px; /* Ancho máximo del modal */
-    position: relative;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2); /* Sombra para un efecto de profundidad */
-}
-
-/* Botón para cerrar el modal */
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 /* Media Queries para dispositivos móviles */
