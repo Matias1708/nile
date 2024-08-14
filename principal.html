@@ -151,6 +151,20 @@
             }
         }
 
+         // Función para manejar el ingreso de la contraseña
+    async function authenticateAdmin() {
+        const password = document.getElementById('admin-password').value;
+        const correctPassword = 'nico1234'; // Reemplaza con la contraseña real
+
+        if (password === correctPassword) {
+            hideAdminModal();
+            document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de turnos reservados
+            await getRecords(); // Actualiza la lista de reservas
+        } else {
+            document.getElementById('auth-error-message').style.display = 'block';
+        }
+    }
+
         // Llama a la función para obtener los documentos al cargar la página
         window.onload = () => {
             getRecords();
