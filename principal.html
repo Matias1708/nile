@@ -160,6 +160,11 @@
             // Actualizar opciones de hora cuando se seleccione la fecha o el profesional
             document.getElementById('calendar').addEventListener('change', populateTimeOptions);
             document.getElementById('professional').addEventListener('change', populateTimeOptions);
+            // Inicializar Flatpickr en el campo de fecha
+            flatpickr("#calendar", {
+                dateFormat: "d/m/Y",
+                locale: "es"
+            });
         };
     </script>
 </head>
