@@ -165,6 +165,9 @@
             document.getElementById('calendar').addEventListener('change', populateTimeOptions);
             document.getElementById('professional').addEventListener('change', populateTimeOptions);
 
+            // Mostrar el modal de autenticación al presionar el botón de administración
+            document.getElementById('admin-button').addEventListener('click', showAdminModal);
+
             document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
 
             document.querySelectorAll('.close-btn').forEach(button => {
@@ -186,6 +189,8 @@
         <div class="brand-image">
             <img src="images/nile_header.jpg" alt="Marca">
         </div>
+        <!-- Botón de administración -->
+        <button id="admin-button">Administración</button>
     </header>
 
     <div class="container">
