@@ -154,6 +154,7 @@
             }
         }
 
+        // Llama a la función para obtener los documentos al cargar la página
         window.onload = () => {
             getRecords();
 
@@ -162,12 +163,11 @@
             // Actualizar opciones de hora cuando se seleccione la fecha o el profesional
             document.getElementById('calendar').addEventListener('change', populateTimeOptions);
             document.getElementById('professional').addEventListener('change', populateTimeOptions);
-
-            // Configura los eventos del modal
+        };
            
             document.querySelector('.close-btn').addEventListener('click', hideAdminModal);
             document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
-        };
+        
     </script>
     <style>
         /* Estilo del modal */
