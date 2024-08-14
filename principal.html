@@ -151,9 +151,9 @@
         }
 
         // Función para mostrar el modal de confirmación
-        function showConfirmationModal() {
-            document.getElementById('confirmation-modal').style.display = 'block';
-        }
+        // function showConfirmationModal() {
+        //     document.getElementById('confirmation-modal').style.display = 'block';
+        // }
 
         // Función para cerrar el modal de confirmación
         function closeConfirmationModal() {
@@ -167,6 +167,22 @@
                 locale: "es"
             });
         }
+
+        // Obtener elementos del DOM
+const openModalButton = document.getElementById('open-modal-button');
+
+// Función para mostrar el modal de confirmación solo para el administrador
+function showConfirmationModal() {
+    const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
+    if (isAdmin === 'nico1234') { // Verifica la contraseña
+        document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
+    } else {
+        alert('Contraseña incorrecta. No tienes permiso para ver las reservas.');
+    }
+}
+
+// Evento para abrir el modal y solicitar la contraseña
+openModalButton.addEventListener('click', showConfirmationModal);
 
         // Llama a la función para obtener los documentos al cargar la página
         window.onload = () => {
@@ -228,6 +244,16 @@
         </div>
     </div>
 
+    <!-- Mensaje de confirmación -->
+    <div id="confirmation-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeConfirmationModal()">&times;</span>
+            <p>¡Tu turno ha sido reservado con éxito!</p>
+            <p>¿Deseas recibir un recordatorio en WhatsApp?</p>
+            <a id="whatsapp-link" href="#" target="_blank">Enviar recordatorio por WhatsApp</a>
+        </div>
+    </div>
+
     <!-- Modal de autenticación del administrador -->
     <div id="auth-modal" class="modal" style="display: none;">
         <div class="modal-content">
@@ -243,6 +269,18 @@
         </div>
     </div>
 
+    <button id="open-modal-button">Panel Administración</button>
+
+
+
+    <div id="custom-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal-button">&times;</span>
+            
+            <button id="confirm-button">Confirmar</button>
+        </div>
+    </div>
+    
     <footer>
         <div class="footer-content">
             <div class="contact-info">
