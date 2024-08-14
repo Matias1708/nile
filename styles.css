@@ -5,48 +5,6 @@
     font-style: normal;
 }
 
-/* Estilos generales para el modal */
-.modal {
-    display: none; /* Oculto por defecto */
-    position: fixed; /* Posición fija para que el modal se quede en el mismo lugar al hacer scroll */
-    z-index: 1000; /* Asegúrate de que el modal esté por encima de otros elementos */
-    left: 0;
-    top: 0;
-    width: 100%; /* Ancho completo de la pantalla */
-    height: 100%; /* Alto completo de la pantalla */
-    overflow: auto; /* Permite hacer scroll si el contenido del modal es más grande que la ventana */
-    background-color: rgba(0, 0, 0, 0.4); /* Fondo semitransparente */
-}
-
-/* Contenido del modal */
-.modal-content {
-    background-color: #fff;
-    margin: 15% auto; /* Centra el modal verticalmente */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
-    max-width: 500px; /* Ancho máximo del modal */
-    position: relative;
-    top: 0;
-    left: 0;
-}
-
-/* Botón para cerrar el modal */
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
 html, body {
     height: 100%;
     margin: 0;
@@ -343,6 +301,44 @@ header {
     margin: 10px 0;
     padding: 10px;
     width: calc(100% - 22px); /* Ancho del input y el botón */
+}
+/* Estilos generales para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija para que el modal se quede en el mismo lugar al hacer scroll */
+    z-index: 1000; /* Asegúrate de que el modal esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo de la pantalla */
+    height: 100%; /* Alto completo de la pantalla */
+    overflow: auto; /* Permite hacer scroll si el contenido del modal es más grande que la ventana */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; /* Centra el modal verticalmente y horizontalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+    max-width: 500px; /* Ancho máximo del modal */
+    position: relative;
+}
+
+/* Botón para cerrar el modal */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* Media Queries para dispositivos móviles */
