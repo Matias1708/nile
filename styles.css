@@ -7,7 +7,7 @@
 
 /* Estilo para el modal */
 .modal {
-    display: none; /* Ocultar el modal por defecto */
+    /*display: none; /* Ocultar el modal por defecto */
     position: fixed; /* Mantener el modal en la misma posición */
     z-index: 1000; /* Asegurarse de que esté en la parte superior */
     left: 0;
