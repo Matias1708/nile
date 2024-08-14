@@ -208,27 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const closeBtn = modal.querySelector('.close-btn');
                     const whatsappLink = modal.querySelector('#whatsapp-link');
 
-                    // Generar el mensaje de WhatsApp
-                    const phoneNumber = '1137927556'; // Reemplaza con tu número de WhatsApp
-                    const message = `Hola, mi nombre es ${name}. Quisiera confirmar mi turno el ${formattedDate} a las ${time} con ${professional} para ${service}.`;
-                    const encodedMessage = encodeURIComponent(message);
-                    whatsappLink.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-                    modal.style.display = 'block';
-
-                    closeBtn.onclick = function() {
-                        modal.style.display = 'none';
-                    }
-
-                    window.onclick = function(event) {
-                        if (event.target === modal) {
-                            modal.style.display = 'none';
-                        }
-                    }
-                } else {
-                    console.error(`No se encontró el modal con ID: ${modalId}`);
-                }
-            }
+                    
 
             // Limpiar el formulario
             document.getElementById('name').value = '';
