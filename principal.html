@@ -151,7 +151,17 @@
             }
         }
 
-         // Función para manejar el ingreso de la contraseña
+       // Función para mostrar el modal de autenticación del administrador
+    function showAdminModal() {
+        document.getElementById('admin-auth-modal').style.display = 'block';
+    }
+
+    // Función para ocultar el modal de autenticación
+    function hideAdminModal() {
+        document.getElementById('admin-auth-modal').style.display = 'none';
+    }
+
+    // Función para manejar el ingreso de la contraseña
     async function authenticateAdmin() {
         const password = document.getElementById('admin-password').value;
         const correctPassword = 'nico1234'; // Reemplaza con la contraseña real
@@ -164,7 +174,6 @@
             document.getElementById('auth-error-message').style.display = 'block';
         }
     }
-
         // Llama a la función para obtener los documentos al cargar la página
         window.onload = () => {
             getRecords();
