@@ -21,15 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('professional').addEventListener('change', populateTimeOptions);
 
     // Mostrar el modal de autenticación al presionar el botón de administración
-    document.getElementById('admin-button').addEventListener('click', showAdminModal);
+    //cument.getElementById('admin-button').addEventListener('click', showAdminModal);
 
-    document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
+    //document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
 
-    document.querySelectorAll('.close-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            hideAdminModal();
-        });
-    });
+    //document.querySelectorAll('.close-btn').forEach(button => {
+        //button.addEventListener('click', () => {
+        //    hideAdminModal();
+      //  });
+    //});
 
     window.addEventListener('click', (event) => {
         if (event.target === document.getElementById('admin-auth-modal')) {
