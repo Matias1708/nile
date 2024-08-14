@@ -10,6 +10,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#calendar", {
+        dateFormat: "d/m/Y",
+        locale: "es"
+    });
+
+    document.getElementById('book-button').addEventListener('click', bookAppointment);
+    document.getElementById('calendar').addEventListener('change', populateTimeOptions);
+    document.getElementById('professional').addEventListener('change', populateTimeOptions);
+
+    // Mostrar el modal de autenticación al presionar el botón de administración
+    document.getElementById('admin-button').addEventListener('click', showAdminModal);
+
+    document.getElementById('admin-auth-btn').addEventListener('click', authenticateAdmin);
+
+    document.querySelectorAll('.close-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            hideAdminModal();
+        });
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === document.getElementById('admin-auth-modal')) {
+            hideAdminModal();
+        }
+    });
+});
+
+
     // Definir horarios disponibles para cada profesional
     const professionalSchedules = {
         'Nicolas': {
