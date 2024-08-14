@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turnero de Peluquería</title>
+    <title>Nile Urban Lounge</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -184,7 +184,7 @@ async function authenticateAdmin() {
             // Actualizar opciones de hora cuando se seleccione la fecha o el profesional
             document.getElementById('calendar').addEventListener('change', populateTimeOptions);
             document.getElementById('professional').addEventListener('change', populateTimeOptions);
-    
+            
         };
     </script>
 </head>
@@ -237,16 +237,7 @@ async function authenticateAdmin() {
     </div>
 
     <!-- Modal de autenticación del administrador -->
-<div id="admin-auth-modal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Autenticación de Administrador</h2>
-        <p>Por favor, ingresa la contraseña para acceder al panel de administrador.</p>
-        <input type="password" id="admin-password" placeholder="Contraseña">
-        <button id="admin-auth-btn">Ingresar</button>
-        <p id="auth-error-message" style="color: red; display: none;">Contraseña incorrecta, por favor inténtalo de nuevo.</p>
-    </div>
-</div>
+
    
 
     <footer>
