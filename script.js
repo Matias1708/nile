@@ -257,16 +257,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#book-button').addEventListener('click', bookAppointment);
 
     // Función para mostrar el modal de confirmación solo para el administrador
-    function showConfirmationModal() {
-        const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
-        if (isAdmin === 'nico1234') { // Verifica la contraseña
-            document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
-        } 
-    }
+//     function showConfirmationModal() {
+//         const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
+//         if (isAdmin === 'nico1234') { // Verifica la contraseña
+//             document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
+//         } 
+//     }
 
-    // Mostrar el modal de confirmación solo al administrador
-    showConfirmationModal();
-});
+//     // Mostrar el modal de confirmación solo al administrador
+//     showConfirmationModal();
+// });
+
+// Obtener elementos del DOM
+const openModalButton = document.getElementById('open-modal-button');
+
+// Función para mostrar el modal de confirmación solo para el administrador
+function showConfirmationModal() {
+    const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
+    if (isAdmin === 'nico1234') { // Verifica la contraseña
+        document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
+    } else {
+        alert('Contraseña incorrecta. No tienes permiso para ver las reservas.');
+    }
+}
+
+// Evento para abrir el modal y solicitar la contraseña
+openModalButton.addEventListener('click', showConfirmationModal);
+
 
 
 // Función para obtener todos los documentos de la colección 'Reserva'
