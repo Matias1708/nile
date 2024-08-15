@@ -138,13 +138,16 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Evento creado: ' + response.result.htmlLink);
         });
     }
-    
 
     function loadGapi() {
         gapi.load('client:auth2', initClient);
     }
 
-    document.addEventListener('DOMContentLoaded', loadGapi);
+    // Inicializa el desplegable con todas las horas disponibles
+    updateAvailableTimes();
+
+    // Añade el evento de clic al botón
+    document.querySelector('#book-button').addEventListener('click', bookAppointment);
 
     // Función para reservar una cita
     function bookAppointment() {
@@ -250,52 +253,39 @@ document.addEventListener('DOMContentLoaded', function() {
         return `${dayName} ${day}/${month}`;
     }
 
-    // Inicializa el desplegable con todas las horas disponibles
-    updateAvailableTimes();
-
-    // Añade el evento de clic al botón
-    document.querySelector('#book-button').addEventListener('click', bookAppointment);
-
     // Función para mostrar el modal de confirmación solo para el administrador
-//     function showConfirmationModal() {
-//         const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
-//         if (isAdmin === 'nico1234') { // Verifica la contraseña
-//             document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
-//         } 
-//     }
-
-//     // Mostrar el modal de confirmación solo al administrador
-//     showConfirmationModal();
-// });
-
-// Obtener elementos del DOM
-const openModalButton = document.getElementById('open-modal-button');
-
-// Función para mostrar el modal de confirmación solo para el administrador
-function showConfirmationModal() {
-    const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
-    if (isAdmin === 'nico1234') { // Verifica la contraseña
-        document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
-    } else {
-        alert('Contraseña incorrecta. No tienes permiso para ver las reservas.');
+    function showConfirmationModal() {
+        const isAdmin = prompt('Ingresa la contraseña del administrador:'); // Solicita la contraseña
+        if (isAdmin === 'nico1234') { // Verifica la contraseña
+            document.querySelector('.reservations').style.display = 'block'; // Muestra la lista de reservas
+        } else {
+            alert('Contraseña incorrecta. No tienes permiso para ver las reservas.');
+        }
     }
-}
 
-// Evento para abrir el modal y solicitar la contraseña
-openModalButton.addEventListener('click', showConfirmationModal);
+    // Evento para abrir el modal y solicitar la contraseña
+    const openModalButton = document.getElementById('open-modal-button');
+    if (openModalButton) {
+        openModalButton.addEventListener('click', showConfirmationModal);
+    }
 
-
-
-// Función para obtener todos los documentos de la colección 'Reserva'
-function getAllReservations(db) {
-    db.collection('reservas').get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            console.log(doc.id, ' => ', doc.data());
+    // Función para obtener todos los documentos de la colección 'Reserva'
+    function getAllReservations(db) {
+        db.collection('reservas').get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(doc.id, ' => ', doc.data());
+            });
+            console.log('FIN');
+        })
+        .catch((error) => {
+            console.error('Error obteniendo documentos: ', error);
         });
-        console.log('FIN');
-    })
-    .catch((error) => {
-        console.error('Error obteniendo documentos: ', error);
-    });
-}
+    }
+
+    // Cargar la API de Google
+    function loadGapi() {
+        gapi.load('client:auth2', initClient);
+    }
+    document.addEventListener('DOMContentLoaded', loadGapi);
+});
